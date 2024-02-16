@@ -1,3 +1,15 @@
+# найти палиндром через рекурсию
+
+# def palindrom(str_1):
+#     if len(str_1) <= 1:
+#         return True
+#     if str_1[0] != str_1[-1]:
+#         return False
+#     return palindrom(str_1[1:-1])
+
+# print(palindrom('qwewq'))
+
+
 # Задача №39. 
 # Даны два массива чисел. Требуется вывести те элементы
 # первого массива (в том порядке, в каком они идут в первом
@@ -11,7 +23,25 @@
 # 6
 # 4 15 43 1 15 1          (каждое число вводится с новой строки)
 
+# print('Первый массив')
+# n = int(input('Введите количество элементов в массиве: '))
+# lst1 = [int(i) for i in input('Введите элементы списка через пробел: ').split()]
+# lst1 = [3, 1, 3, 4, 2, 4, 12]
+# print("Второй массив")
+# m = int(input('Введите количество элементов в массиве: '))
+# lst2 = [int(i) for i in input('Введите элементы списка через пробел: ').split()]
+# lst2 = [4, 15, 43, 1, 15, 1]
 
+# Решение 1
+# mas = []
+# for item in lst1:
+#     if item not in lst2:
+#         mas.append(item)
+# print(mas)
+
+# Решение 2
+# mas2 = [item for item in lst1 if item not in lst2]
+# print(*mas2)
 
 # Задача №41. 
 # Дан массив, состоящий из целых чисел. Напишите
@@ -28,7 +58,14 @@
 # 0                           2
 #                             (каждое число вводится с новой строки)
 
-
+# n = int(input('Введите количество элементов в массиве: '))
+# lst = [int(i) for i in input('Введите элементы списка через пробел: ').split()]
+# # lst = [1, 2, 3, 4, 5]
+# count = 0
+# for i in range(1, len(lst) - 1):
+#     if lst[i] > lst[i-1] and lst[i] > lst[i+1]:
+#         count += 1
+# print(count)
 
 # Задача №43.
 # Дан список чисел. Посчитайте, сколько в нем пар
@@ -40,7 +77,29 @@
 # Ввод:                       Вывод:
 # 1 2 3 2 3                   2
 
+# mas = [1, 2, 3, 2, 3]
+# count = 0
+# mas2 = []
 
+# for i in range(len(mas)):
+#     k = 1
+#     for j in range(i + 1, len(mas)):
+#         if mas[i] == mas[j] and mas[i] not in mas2:
+#             k += 1
+#             if k == 2:
+#                 count += 1
+#                 mas2.append(mas[i])
+# print(count)
+
+# Решение 2
+# mas = [1, 2, 3, 2, 3, 3, 3, 2]
+# mas2 = set()
+
+# for i in range(len(mas)):
+#     for j in range(i + 1, len(mas)):
+#         if mas[i] == mas[j]:
+#             mas2.add(mas[i])
+# print(len(mas2))
 
 
 # Задача №45. 
@@ -61,3 +120,84 @@
 # Ввод:                      Вывод:
 # 300                        220 284
 
+# Решение 1
+# def get_sum(number):
+#     s = 0
+#     for i in range(1, number):
+#         if number % i == 0:
+#             s += i
+#     return s
+
+# def func(k):
+#     lst = []
+
+#     for n in range(1, k):
+#         if n not in lst:
+#             m = get_sum(n)
+#             if n == get_sum(m) and m != n:
+#                 lst.append(n)
+#                 lst.append(m)
+
+#     return lst
+
+# number = int(input())
+# print(func(number))
+
+# Решение 2
+# N = int(input())
+# kor = list()
+
+# for i in range(N):
+#     d = 0
+#     for j in range(1, i):
+#         if i % j == 0:
+#             d += j
+#     kor.append(tuple([i,d]))
+
+# # print(kor)
+
+# for i in range(len(kor)):
+#     for j in range(i, len(kor)):
+#         if i !=j and kor[i][0] == kor[j][1] and kor[i][1] == kor[j][0]:
+#             print(*kor[i])
+
+# Решение 3
+# k = int(input())
+# def sum_of_dividors(n):
+#     s = 0
+#     for k in range(1, n // 2 + 1):
+#         if n % k == 0:
+#             s += k
+#     return s
+
+# for i in range(1, k + 1):
+#     j = sum_of_dividors(i)
+#     if i < j <= k and i == sum_of_dividors(j):
+#         print(i, j)
+
+# Дана строка текста, состоящая из букв русского алфавита "О" и "Р". Буква "О" – соответствует выпадению Орла, 
+# а буква "Р" – соответствует выпадению Решки. Напишите программу, 
+# которая подсчитывает наибольшее количество подряд выпавших Решек.
+
+# Формат входных данных
+# На вход программе подается строка текста, состоящая из букв русского алфавита "О" и "Р".
+
+# Формат выходных данных
+# Программа должна вывести наибольшее количество подряд выпавших Решек.
+
+# Примечание. Если выпавших Решек нет, то необходимо вывести число
+# 0
+# 0
+
+# head_tail = 'ООООО'
+# count = 0
+# for letter in head_tail:
+#     if letter == 'Р':
+#         count += 1
+# print(count)
+
+# print(head_tail.count('Р'))    
+
+        
+
+    

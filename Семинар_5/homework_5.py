@@ -30,3 +30,12 @@
 # a = int(input())
 # b = int(input())
 # print(sum(a, b))
+
+# Решение 2
+# def sum(a, b):
+#     if a==0 or b==0:
+#         return a+b
+#     else:
+#         return 1 + sum(a,b-1)
+
+# print(sum(5, 4))
